@@ -1,4 +1,5 @@
 # Enotria-The-Last-Song-Autosplitter
+Where to find the autosplitter? - The autosplitter is found directly in LiveSplit in the "Edit Splits" tab.
 An autosplitter for the PC version of Enotria: The Last Song
 
 A split will trigger when reaching the credits and immediately after defeating a boss, except for Spaventa, Giangurgolo and Pantalone & Balanzone for which it will trigger after you leave their rooms.
@@ -14,3 +15,7 @@ Check out the Guides section on speedrun.com for a downpatch guide.
 1.008.28601      download_depot 2102450 2102451 8377263123071342936
 
 1.009.28831      download_depot 2102450 2102451 5665123200554289427
+
+
+
+Fxyz, 20.06.2026
