@@ -55,12 +55,13 @@ state("Enotria-Win64-Shipping", "1.009.28831")
 
 startup
 {
-	settings.Add("line1", true, "Only the following versions are supported");
-	settings.Add("line2", true, "Check out the Guides section on speedrun.com for a downpatch guide");
-	settings.Add("line3", true, "1.005.26813");
-	settings.Add("line4", true, "1.007.28161");
-	settings.Add("line5", true, "1.008.28601");
-	settings.Add("line6", true, "1.009.28831");
+	settings.Add("line1", true, "Autosplits will trigger after every boss kill and on the credits");
+	settings.Add("line2", true, "Only the following versions are supported");
+	settings.Add("line3", true, "Check out the Guides section on speedrun.com for a downpatch guide");
+	settings.Add("line4", true, "1.005.26813");
+	settings.Add("line5", true, "1.007.28161");
+	settings.Add("line6", true, "1.008.28601");
+	settings.Add("line7", true, "1.009.28831");
 }
 
 init
