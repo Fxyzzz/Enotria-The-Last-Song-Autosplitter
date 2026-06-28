@@ -3,7 +3,7 @@
 state("Enotria-Win64-Shipping", "1.005.26813")
 {
 	int loadValue: 0x85C9958;
-	int BossKill: 0x84B4730, 0xD8, 0x20, 0x18, 0x250, 0x80, 0x10, 0x98;
+	int BossKill: 0x84B4730, 0xD8, 0x20, 0x18, 0x250, 0x80, 0x10, 0x9C;
 	byte Credits: 0x88BCA71;
 	int mainMenu: 0x865C280, 0x8;
 	byte reset: 0x81F5650;
@@ -16,7 +16,7 @@ state("Enotria-Win64-Shipping", "1.005.26813")
 state("Enotria-Win64-Shipping", "1.007.28161")
 {
 	int loadValue: 0x85F8758;
-	int BossKill: 0x84E3530, 0xD8, 0x20, 0x18, 0x250, 0x80, 0x10, 0x98;
+	int BossKill: 0x84E3530, 0xD8, 0x20, 0x18, 0x250, 0x80, 0x10, 0x9C;
 	byte Credits: 0x88EC461;
 	int mainMenu: 0x8868B0A0, 0x8;
 	byte reset: 0x85E48BB;
@@ -30,7 +30,7 @@ state("Enotria-Win64-Shipping", "1.007.28161")
 state("Enotria-Win64-Shipping", "1.008.28601")
 {
 	int loadValue: 0x873C258;
-	int BossKill: 0x8627030, 0xD8, 0x20, 0x18, 0x250, 0x80, 0x10, 0x98;
+	int BossKill: 0x8627030, 0xD8, 0x20, 0x18, 0x250, 0x80, 0x10, 0x9C;
 	byte Credits: 0x8A360C1;
 	int mainMenu: 0x87CEBB0, 0x8;
 	byte reset: 0x835F650;
@@ -43,7 +43,7 @@ state("Enotria-Win64-Shipping", "1.008.28601")
 state("Enotria-Win64-Shipping", "1.009.28831")
 {
 	int loadValue: 0x8751898;
-	int BossKill: 0x863C300, 0xD8, 0x20, 0x18, 0x250, 0x80, 0x10, 0x98;
+	int BossKill: 0x863C300, 0xD8, 0x20, 0x18, 0x250, 0x80, 0x10, 0x9C;
 	byte Credits: 0x8A49D81;
 	int mainMenu: 0x87E41D0, 0x8;
 	byte reset: 0x8375440;										
@@ -320,23 +320,9 @@ split
 		return false;
 	}
 
-	//Mid Bosses
+	//All Bosses (without Spaventa, Giangurgolo and Pantalone & Balanzone)
 
-	if(current.BossKill == 1139494091 && old.BossKill == 0 || current.BossKill == 1139489782 && old.BossKill == 0)
-	{
-		return true;
-	}
-
-	//Goddesses
-	
-	if(current.BossKill == 1140654079 && old.BossKill == 0 || current.BossKill == 1140572209 && old.BossKill == 0)
-	{
-		return true;
-	}
-
-	//Major Bosses (without Spaventa, Giangurgolo and Pantalone & Balanzone)
-	
-	if(current.BossKill == 1143033037 && old.BossKill == 0 || current.BossKill == 1143023905 && old.BossKill == 0)
+	if(current.BossKill == 1137180672 && old.BossKill == 0)
 	{
 		return true;
 	}
@@ -364,8 +350,6 @@ split
 		}
 	}
 
-
-
 	//Protection against unwanted resets
 	if(current.mainMenu == 1 && current.xCoord == 0 && current.yCoord == 0 && vars.reset == 0)
 	{
@@ -375,7 +359,6 @@ split
 	{
 		vars.reset = 0;
 	}
-   
 }
 
 
