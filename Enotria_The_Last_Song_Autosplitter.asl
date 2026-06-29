@@ -94,6 +94,7 @@ init
 
 	vars.reset = 0;
 	vars.doNotSplit = 0;
+	vars.doNotSplitRegion = 0;
 	vars.AstrariumAscendant = 0;
 	vars.Spaventa = 0;
 }
@@ -105,8 +106,9 @@ start
 	{
 		vars.reset = 0;
 		vars.doNotSplit = 0;
+		vars.doNotSplitRegion = 0;
 		vars.AstrariumAscendant = 0;
-		vars.Spaventa = 0;;
+		vars.Spaventa = 0;
 		return true;
 	}
 }
@@ -119,6 +121,9 @@ split
 
 	//protection against unwanted splits
 	
+	
+	//When going back to main menu
+	
 	if(current.xCoord == 0 && current.yCoord == 0 && old.inCombat == 1 && current.inCombat == 0 && vars.doNotSplit == 0)
 	{
 		vars.doNotSplit = 1;
@@ -130,9 +135,35 @@ split
 	}
 	
 	
+	//When entering Falesia
+	
+	if(current.xCoord > -17331.6 && current.xCoord < -16801.1 && current.yCoord > 39030.5 && current.yCoord < 408123.0 && current.zCoord > 9400.0 && current.zCoord < 9800.0 && vars.doNotSplitRegion == 0)
+	{
+		vars.doNotSplitRegion = 1;
+	}
+	
+	if(current.xCoord > -40365.8 && current.xCoord < -39063.4 && current.yCoord > 330386.7 && current.yCoord < 331108.7 && current.zCoord > 17500.0 && current.zCoord < 17700.0 && vars.doNotSplitRegion == 1)
+	{
+		vars.doNotSplitRegion = 0;
+	}
+	
+	
+	//When entering Litumnia
+	
+	if(current.xCoord > 859.8 && current.xCoord < 910.6 && current.yCoord > -27406.2 && current.yCoord < -27069.1 && current.zCoord > 7410.0 && current.zCoord < 7450.0 && vars.doNotSplitRegion == 0)
+	{
+		vars.doNotSplitRegion = 1;
+	}
+	
+	if(current.xCoord > 113811.8 && current.xCoord < 113917.1 && current.yCoord > -508863.1 && current.yCoord < -508429.6 && current.zCoord > 26160.0 && current.zCoord < 26200.0 && vars.doNotSplitRegion == 1)
+	{
+		vars.doNotSplitRegion = 0;
+	}
+	
+	
 	//Astrarium Ascendant case (since can be defeated while out of combat)
 	
-	if(current.xCoord > 96412.9 && current.xCoord < 96603.7 && current.yCoord > -463346.9 && current.yCoord < -461863.1 && current.zCoord > 26277.0 && current.zCoord < 27000.0 && vars.AstrariumAscendant == 0)
+	if(current.xCoord > 96412.9 && current.xCoord < 96603.7 && current.yCoord > -463346.9 && current.yCoord < -461863.1 && current.zCoord > 26270.0 && current.zCoord < 27000.0 && vars.AstrariumAscendant == 0)
 	{
 		vars.AstrariumAscendant = 1;
 	}
@@ -161,7 +192,7 @@ split
 
 	//All Bosses (without Astrarium Ascendant)
 
-	if(current.inCombat == 0 && old.inCombat == 1 && vars.doNotSplit == 0 && vars.AstrariumAscendant == 0 && vars.Spaventa == 0)
+	if(current.inCombat == 0 && old.inCombat == 1 && vars.doNotSplit == 0 && vars.AstrariumAscendant == 0 && vars.Spaventa == 0 && vars.doNotSplitRegion == 0)
 	{
 		return true;
 	}
@@ -213,6 +244,7 @@ reset
 		{
 			vars.reset = 0;
 			vars.doNotSplit = 0;
+			vars.doNotSplitRegion = 0;
 			vars.AstrariumAscendant = 0;
 			vars.Spaventa = 0;
 			return true;
@@ -224,6 +256,7 @@ reset
 		{
 			vars.reset = 0;
 			vars.doNotSplit = 0;
+			vars.doNotSplitRegion = 0;
 			vars.AstrariumAscendant = 0;
 			vars.Spaventa = 0;
 			return true;
