@@ -61,6 +61,7 @@ startup
 	settings.Add("line8", true, "1.009.28831");
 }
 
+
 init
 {
 	string MD5Hash;
@@ -91,10 +92,10 @@ init
 			version = "Unsupported version"; break;
 	}
 
-	vars.reset        		 = 0;
-	vars.doNotSplit			 = 0;
-	vars.AstrariumAscendant	 = 0;
-	vars.Spaventa	 		 = 0;
+	vars.reset = 0;
+	vars.doNotSplit = 0;
+	vars.AstrariumAscendant = 0;
+	vars.Spaventa = 0;
 }
 
 
@@ -102,10 +103,10 @@ start
 {
 	if(current.mainMenu == 259 && current.loadValue == 1 && old.loadValue == 50)
 	{
-		vars.reset 				  = 0;
-		vars.doNotSplit			  = 0;
-		vars.AstrariumAscendant	  = 0;
-		vars.Spaventa	 		  = 0;
+		vars.reset = 0;
+		vars.doNotSplit = 0;
+		vars.AstrariumAscendant = 0;
+		vars.Spaventa = 0;;
 		return true;
 	}
 }
@@ -114,6 +115,7 @@ start
 split
 {
 	refreshRate = 100;
+
 
 	//protection against unwanted splits
 	
@@ -127,6 +129,7 @@ split
 		vars.doNotSplit = 0;
 	}
 	
+	
 	//Astrarium Ascendant case (since can be defeated while out of combat)
 	
 	if(current.xCoord > 96412.9 && current.xCoord < 96603.7 && current.yCoord > -463346.9 && current.yCoord < -461863.1 && current.zCoord > 26277.0 && current.zCoord < 27000.0 && vars.AstrariumAscendant == 0)
@@ -139,7 +142,9 @@ split
 		return true;
 	}
 
+
 	//Spaventa case (cause he has a fake death which makes us go out of combat)
+	
 	if(current.xCoord > 52954.0 && current.xCoord < 52964.0 && current.yCoord > 294816.0 && current.yCoord < 294820.0 && current.zCoord > 40660.0 && current.zCoord < 40665.0 && vars.AstrariumAscendant == 0)
 	{
 		vars.Spaventa = 1;
@@ -153,6 +158,7 @@ split
 		vars.Spaventa = 0 ;
 	}
 
+
 	//All Bosses (without Astrarium Ascendant)
 
 	if(current.inCombat == 0 && old.inCombat == 1 && vars.doNotSplit == 0 && vars.AstrariumAscendant == 0 && vars.Spaventa == 0)
@@ -160,7 +166,9 @@ split
 		return true;
 	}
 
+
 	//credits
+	
 	if(version == "1.005.26813")
 	{
 		if(current.credits == 30 && old.credits != 30)
@@ -183,7 +191,9 @@ split
 		}
 	}
 
+
 	//Protection against unwanted resets
+	
 	if(current.mainMenu == 1 && current.xCoord == 0 && current.yCoord == 0 && vars.reset == 0)
 	{
 		vars.reset = 1;
@@ -201,10 +211,10 @@ reset
 	{
 		if(vars.reset == 1 && current.mainMenu == 259 && current.reset == 19)
 		{
-			vars.reset                = 0;
-			vars.doNotSplit		      = 0;
-			vars.AstrariumAscendant	  = 0;
-			vars.Spaventa	 		  = 0;
+			vars.reset = 0;
+			vars.doNotSplit = 0;
+			vars.AstrariumAscendant = 0;
+			vars.Spaventa = 0;
 			return true;
 		}
 	}
@@ -212,10 +222,10 @@ reset
 	{
 		if(vars.reset == 1 && current.mainMenu == 259 && current.reset == 20)
 		{
-			vars.reset                = 0;
-			vars.doNotSplit			  = 0;
-			vars.AstrariumAscendant	  = 0;
-			vars.Spaventa	 		  = 0;
+			vars.reset = 0;
+			vars.doNotSplit = 0;
+			vars.AstrariumAscendant = 0;
+			vars.Spaventa = 0;
 			return true;
 		}
 	}
