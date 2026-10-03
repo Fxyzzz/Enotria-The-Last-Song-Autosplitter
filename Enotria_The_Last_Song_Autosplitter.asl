@@ -1,4 +1,4 @@
-//intial release 20-06-2026 by Fxyz, Last update: 29-06-2026
+//intial release 20-06-2026 by Fxyz, Last update: 03-10-2026
 
 state("Enotria-Win64-Shipping", "1.005.26813")
 {
@@ -49,6 +49,18 @@ state("Enotria-Win64-Shipping", "1.009.28831")
 	double zCoord: 0x87A5AE8, 0x0, 0x20, 0x218, 0x0, 0x200;
 }
 
+state("Enotria-Win64-Shipping", "1.011.29619")
+{
+	int loadValue: 0x93C1750;
+	byte inCombat: 0x94DFEF8, 0x34;
+	byte credits: 0x94E0751;
+	int mainMenu: 0x93FA0B8, 0x8;
+	byte reset: 0x8FCD6D0;										
+	double xCoord: 0x9040220, 0x20, 0x8, 0x10, 0xD0, 0x210;
+	double yCoord: 0x9040220, 0x20, 0x8, 0x10, 0xD0, 0x218;
+	double zCoord: 0x9040220, 0x20, 0x8, 0x10, 0xD0, 0x220;
+}
+
 startup
 {
 	settings.Add("line1", true, "Autosplits will trigger after every boss kill and on the credits");
@@ -59,6 +71,7 @@ startup
 	settings.Add("line6", true, "1.007.28161");
 	settings.Add("line7", true, "1.008.28601");
 	settings.Add("line8", true, "1.009.28831");
+	settings.Add("line9", true, "1.011.29619 (experimental)");
 }
 
 
@@ -87,6 +100,9 @@ init
 
 		case "C97DFEA541733527B487534BF8C08A5E":
 			version = "1.009.28831"; break;
+		
+		case "6000EDF9F12A2DF4EB7246283FE74DE4":
+			version = "1.011.29619"; break;
 			
 		default:
 			version = "Unsupported version"; break;
@@ -102,7 +118,17 @@ init
 
 start
 {
-	if(current.mainMenu == 259 && current.loadValue == 1 && old.loadValue == 50)
+	if(version == "1.011.29619" && current.mainMenu == 11 && current.loadValue == 1 && old.loadValue == 50)
+	{
+		vars.reset = 0;
+		vars.doNotSplit = 0;
+		vars.doNotSplitRegion = 0;
+		vars.AstrariumAscendant = 0;
+		vars.Spaventa = 0;
+		return true;
+	}
+	
+	if(version != "1.011.29619" && current.mainMenu == 259 && current.loadValue == 1 && old.loadValue == 50)
 	{
 		vars.reset = 0;
 		vars.doNotSplit = 0;
@@ -214,7 +240,7 @@ split
 			return true;
 		}
 	}
-	if(version == "1.008.28601" || version == "1.009.28831")
+	if(version == "1.008.28601" || version == "1.009.28831" || version == "1.011.29619")
 	{
 		if(current.credits == 105 && old.credits != 105)
 		{
@@ -253,6 +279,18 @@ reset
 	if(version == "1.007.28161"|| version == "1.008.28601" || version == "1.009.28831")
 	{
 		if(vars.reset == 1 && current.mainMenu == 259 && current.reset == 20)
+		{
+			vars.reset = 0;
+			vars.doNotSplit = 0;
+			vars.doNotSplitRegion = 0;
+			vars.AstrariumAscendant = 0;
+			vars.Spaventa = 0;
+			return true;
+		}
+	}
+	if(version == "1.011.29619")
+	{
+		if(vars.reset == 1 && current.mainMenu == 11 && current.reset == 13 && old.reset == 12)
 		{
 			vars.reset = 0;
 			vars.doNotSplit = 0;
