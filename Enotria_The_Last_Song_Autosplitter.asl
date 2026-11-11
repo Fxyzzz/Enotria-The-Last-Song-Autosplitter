@@ -1,4 +1,4 @@
-//intial release 20-06-2026 by Fxyz, Last update: 03-10-2026
+//intial release 20-06-2026 by Fxyz, Last update: 11-11-2026
 
 state("Enotria-Win64-Shipping", "1.005.26813")
 {
@@ -202,7 +202,7 @@ split
 
 	//Spaventa case (cause he has a fake death which makes us go out of combat)
 	
-	if(current.xCoord > 52954.0 && current.xCoord < 52964.0 && current.yCoord > 294816.0 && current.yCoord < 294820.0 && current.zCoord > 40660.0 && current.zCoord < 40665.0 && vars.AstrariumAscendant == 0)
+	if(current.xCoord > 52954.0 && current.xCoord < 52964.0 && current.yCoord > 294816.0 && current.yCoord < 294820.0 && current.zCoord > 40660.0 && current.zCoord < 40665.0 && vars.Spaventa == 0)
 	{
 		vars.Spaventa = 1;
 	}
